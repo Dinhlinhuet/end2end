@@ -1,9 +1,15 @@
 import pickle
 from matplotlib import pyplot as plt
 
-images, labels = pickle.load(open('/media/warrior/Ubuntu/'
-                                 'corp_workspace/hw_data/datajohn/dataloader_grayscale/latin_number.pkl','rb'))
-for i in range(10):
-    plt.imshow(images[i])
-    plt.show()
-    print('labels', len(labels[i]))
+def checkfile(filename):
+    images, labels = pickle.load(open(filename,'rb'))
+    for i in range(len(labels)):
+        # plt.imshow(images[i])
+        # plt.show()
+        # print('labels', len(labels[i]))
+        print(labels[i])
+    # print(labels)
+
+# filename = '/media/warrior/Ubuntu/corp_workspace/hw_data/datajohn/dataloader_grayscale/latin_number.pkl'
+filename = '/media/warrior/Ubuntu/corp_workspace/data_gen/dev/images.pkl'
+checkfile(filename)

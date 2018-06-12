@@ -21,14 +21,17 @@ def format2string():
 	Y = (list(range(10)),'Y')
 	A = (list(range(10)), 'A')
 
-	out_file = open('../dev/datetime_text.txt', 'r+')
+	# out_file = open('../dev/datetime_text.txt', 'r+')
+	sample_file = open('../dev/datetime_text_sample.txt', 'w+')
 	total_sample = 0
 	out_lines = []
 	print('len', len(lines))
+	show_lines = []
 	for line in lines:
 		ls_sign = []
 		combination = []
 		print('line', line)
+		'''each character correspond to a sign'''
 		for char in line:
 			if char == 'M':
 				ls_sign.append(M)
@@ -61,22 +64,27 @@ def format2string():
 		#ls_sign:'YMND'
 
 		# print('combin', combination)
+		'''numeric combination'''
 		tp_signs = list(itertools.product(*combination))
 		print('lssign',[sign[1] for sign in ls_sign])
 		print('tp sign', len(tp_signs))
+		print(tp_signs[0])
 		total_sample+= len(tp_signs)
 		leng_sign= len(ls_sign)
-		for cb in tp_signs:
+		for cb in [tp_signs[0]]:
 			'''len(cb)=len(sign)'''
 			# print('cb',cb)
 			org_line = line
+			#replace all sign occurences
 			for i in range(leng_sign):
 				'''replace all character'''
 				org_line= org_line.replace(ls_sign[i][1],(str(cb[i])))
-			out_lines.append(org_line)
-			out_file.write(org_line+'\n')
+			# out_lines.append(org_line)
+			# out_file.write(org_line+'\n')
 			print('line', org_line)
-	out_file.close()
+			# out_lines.append(org_line)
+			sample_file.write(org_line + '\n')
+	# out_file.close()
 	print('total_sample', total_sample)
 
 
