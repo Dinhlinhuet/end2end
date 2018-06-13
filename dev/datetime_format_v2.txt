@@ -63,3 +63,16 @@ HYA.0O.0Q
 HYA/0O/0Q
 平成YA.M.P
 平成YA-M-D
+HYY年M月~HYY年M月
+YA年M月
+HYA年M月
+L年M月頃
+L年M月頃からD日間
+L年M月頃から0Q日間
+L年OO月頃
+L年0O月頃からD日間
+L年0O月頃から0Q日間
+20YA年M月D日
+20YA年M月0Q日
+20YA年0O月D日
+20YA年0O月0Q日

@@ -2,14 +2,8 @@ import random as rd
 import itertools
 
 def format2string():
-	file = open('../dev/datetime_format.txt','r')
+	file = open('../dev/datetime_format_v2.txt','r')
 	lines = file.readlines()
-	# J = range(2)
-	# M = range(10)
-	# N = range(2)
-	# C = range(4)
-	# D = range(10)
-	# Y = range(10)
 
 	O = (list(range(1,10)),'O')
 	M = (list(range(1,10)),'M')
@@ -21,8 +15,8 @@ def format2string():
 	Y = (list(range(10)),'Y')
 	A = (list(range(10)), 'A')
 
-	# out_file = open('../dev/datetime_text.txt', 'r+')
-	sample_file = open('../dev/datetime_text_sample.txt', 'w+')
+	out_file = open('../dev/datetime_text_sample_v2.txt', 'w')
+	# sample_file = open('../dev/datetime_text_sample.txt', 'w+')
 	total_sample = 0
 	out_lines = []
 	print('len', len(lines))
@@ -61,8 +55,6 @@ def format2string():
 				ls_sign.append(A)
 				combination.append(A[0])
 
-		#ls_sign:'YMND'
-
 		# print('combin', combination)
 		'''numeric combination'''
 		tp_signs = list(itertools.product(*combination))
@@ -79,12 +71,12 @@ def format2string():
 			for i in range(leng_sign):
 				'''replace all character'''
 				org_line= org_line.replace(ls_sign[i][1],(str(cb[i])))
-			# out_lines.append(org_line)
-			# out_file.write(org_line+'\n')
+			out_lines.append(org_line)
+			out_file.write(org_line+'\n')
 			print('line', org_line)
-			# out_lines.append(org_line)
-			sample_file.write(org_line + '\n')
-	# out_file.close()
+			out_lines.append(org_line)
+			# sample_file.write(org_line + '\n')
+	out_file.close()
 	print('total_sample', total_sample)
 
 
