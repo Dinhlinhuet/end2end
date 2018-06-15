@@ -14,17 +14,20 @@ def format2string():
 	Q = (list(range(1,10)),'Q')
 	Y = (list(range(10)),'Y')
 	A = (list(range(10)), 'A')
+	B = (list(range(3)),'B')
 
-	out_file = open('../dev/datetime_text_sample_v2.txt', 'w')
+	out_file = open('../dev/datetime_text_v2.txt', 'w')
+	annotation_file = open('../dev/annotation.txt', 'w')
 	# sample_file = open('../dev/datetime_text_sample.txt', 'w+')
 	total_sample = 0
 	out_lines = []
 	print('len', len(lines))
-	show_lines = []
+	j=0
 	for line in lines:
+		line = line.strip()
 		ls_sign = []
 		combination = []
-		print('line', line)
+		print('line', line, len(line))
 		'''each character correspond to a sign'''
 		for char in line:
 			if char == 'M':
@@ -54,6 +57,9 @@ def format2string():
 			if char == 'A':
 				ls_sign.append(A)
 				combination.append(A[0])
+			if char == 'B':
+				ls_sign.append(B)
+				combination.append(B[0])
 
 		# print('combin', combination)
 		'''numeric combination'''
@@ -63,7 +69,10 @@ def format2string():
 		print(tp_signs[0])
 		total_sample+= len(tp_signs)
 		leng_sign= len(ls_sign)
-		for cb in [tp_signs[0]]:
+		'''toshow'''
+		# for cb in [tp_signs[0]]:
+		'''to full'''
+		for cb in tp_signs:
 			'''len(cb)=len(sign)'''
 			# print('cb',cb)
 			org_line = line
@@ -73,10 +82,16 @@ def format2string():
 				org_line= org_line.replace(ls_sign[i][1],(str(cb[i])))
 			out_lines.append(org_line)
 			out_file.write(org_line+'\n')
-			print('line', org_line)
+			prefix_file = org_line
+			if '/' in prefix_file: prefix_file = prefix_file.replace('/','s')
+			textline= '%07d_%s.png %s\n'%(j,prefix_file, org_line)
+			annotation_file.writelines(textline)
+			# print('line', org_line)
 			out_lines.append(org_line)
+			j+=1
 			# sample_file.write(org_line + '\n')
 	out_file.close()
+	annotation_file.close()
 	print('total_sample', total_sample)
 
 
